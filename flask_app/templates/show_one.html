@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}}</h1>
+    <nav><a href="/dashboard">Dashboard</a> <a href="/new">Create</a> <a href="/logout">Logout</a></nav>
+    <div class="top-bar">
+        <p>{{song.name}}</p> <p>{{song.user.first_name}}</p>
+        <a href="/new">+ Create</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <table class="">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Posted By</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                    <tr>
+                        <td>{{song.name}}</td>
+                        <td>{{song.description}}</td>
+                        <td>{{song.user.first_name}}</td>
+                        <td>
+                            <a href="/songs/{{song.id}}">view songs</a>
+                            <!--edit and delete conditional-->
+                            {% if song.user.id == user.id: %}
+                            <a href="/update/{{song.id}}">edit</a>
+                            <a href="/songs/delete/{{song.id}}">delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+    <a href="{{song.video}}" target="_blank"> <img src="{{song.img}}" alt=""></a>
+</body>
+</html>
+

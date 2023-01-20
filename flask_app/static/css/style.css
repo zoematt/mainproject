@@ -1,0 +1,25 @@
+img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+html {
+    width: 98vw;
+    height: 98vh;
+    background-color: purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    width: 50vw;
+    height: 80vh;
+    background-color: rgba(245, 245, 220, 0.8);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    border-radius: 2vh;
+}

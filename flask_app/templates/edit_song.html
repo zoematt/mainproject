@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Edit Recipe</title>
+</head>
+<body>
+    <div>
+        {% with messages = get_flashed_messages() %}
+            <!-- declare a variable called messages -->
+            {% if messages %}
+            <!-- check if there are any messages -->
+            {% for message in messages %}
+            <!-- loop through the messages -->
+            <p class="error">{{message}}</p> <!-- display each message in a paragraph tag -->
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        <form action="/change" method="POST">
+            <!-- id -->
+            <input type="hidden" name="id" value="{{song.id}}">
+            <!-- name -->
+            <label for="name">
+                Song Name:
+            </label>
+            <input type="text" name="name" value="{{song.name}}">
+            <br>
+            <!-- Img -->
+            <label for="img">
+                Img:
+            </label>
+            <input type="text" name="img" value="{{song.img}}">
+            <br>
+            <!-- description-->
+            <label for="description">
+                Description
+            </label> 
+            <textarea cols="5" rows="5" name="description" placeholder="Talk to me..">
+                {{song.description}}
+            </textarea>
+            <br>
+            <!-- Video-->
+            <label for="video">
+                Video:
+            </label>
+            <input type="text" name="video" value="{{song.video}}">
+            <br>
+            <!-- creator_id -->
+            <input type="hidden" name="user_id" value="{{song.user.id}}">
+            <!-- submit -->
+            <input type="submit" value="edit">
+        </form>
+    </div>
+</body>
+</html>
